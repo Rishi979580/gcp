@@ -1,0 +1,196 @@
+GIT & GITHUB NOTES
+(FOR PYTHON AUTOMATION PROJECT – CLOUD SHELL READY)
+
+Purpose:
+To safely manage a Python automation project using Git and GitHub,
+avoid pushing system/secret files,
+and keep the repository clean, professional, and job-ready.
+
+==================================================
+1. Basic Concepts
+==================================================
+
+Git:
+- Local version control system
+- Tracks changes in code
+
+GitHub:
+- Remote repository for code backup and portfolio
+
+Rule:
+One project = One GitHub repository
+
+==================================================
+2. Where to Run Git Commands
+==================================================
+
+Always run git commands from the PROJECT ROOT.
+
+Example:
+~/FUTUREWAY_IN/python_automation_project
+
+==================================================
+3. Git User Identity (MANDATORY – FIRST TIME ONLY)
+==================================================
+
+Git requires user name and email before first commit.
+
+Set global identity:
+
+git config --global user.name "Your Full Name"
+git config --global user.email "your_email@example.com"
+
+Verify:
+git config --global --list
+
+Note:
+- This step is required only once per Cloud Shell account
+- Without this, git commit will FAIL
+
+==================================================
+4. Initialize Git Repository
+==================================================
+
+git init
+- Initializes a git repository
+
+Set branch name to main:
+git branch -M main
+
+==================================================
+5. .gitignore (MOST IMPORTANT FILE)
+==================================================
+
+Purpose:
+- Prevent pushing virtual environment
+- Prevent pushing system files
+- Prevent pushing secrets
+
+Create or edit:
+nano .gitignore
+
+FINAL .gitignore CONTENT:
+
+--------------------------------
+# Cloud Shell / system files
+.bash_history
+.bash_logout
+.bashrc
+.profile
+.sudo_as_admin_successful
+
+# OS files
+.DS_Store
+
+# Python virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+--------------------------------
+
+Save:
+CTRL + O → Enter
+Exit:
+CTRL + X
+
+Verify:
+cat .gitignore
+
+==================================================
+6. Clean Staging (If Wrong Files Were Added)
+==================================================
+
+git reset
+- Unstages everything
+
+git add .
+- Adds only allowed files
+
+Check:
+git status
+
+Expected:
+Only project files listed
+
+==================================================
+7. First Commit
+==================================================
+
+git commit -m "Initial Python automation project setup"
+
+==================================================
+8. Create GitHub Repository
+==================================================
+
+Steps (Browser):
+1. GitHub → New Repository
+2. Name: python-automation-project
+3. Public (recommended)
+4. Do NOT auto-create README
+5. Create repository
+
+==================================================
+9. Connect Local Repo to GitHub
+==================================================
+
+git remote add origin https://github.com/USERNAME/python-automation-project.git
+
+Verify:
+git remote -v
+
+==================================================
+10. Push Code to GitHub
+==================================================
+
+git push -u origin main
+
+- Browser authorization may appear → Allow
+
+==================================================
+11. Daily Development Workflow
+==================================================
+
+cd ~/FUTUREWAY_IN/python_automation_project
+source venv/bin/activate
+
+# make code changes
+git add .
+git commit -m "update automation logic"
+git push
+
+deactivate
+
+==================================================
+12. If Cloud Shell Resets
+==================================================
+
+git clone https://github.com/USERNAME/python-automation-project.git
+cd python-automation-project
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+==================================================
+13. Golden Rules
+==================================================
+
+- Never push venv/
+- Never push .env
+- Never push system files
+- Configure git user before first commit
+
+==================================================
+14. One-Line Summary
+==================================================
+
+Cloud Shell is temporary.
+GitHub is permanent.
+
+==================================================
+END OF NOTES
+==================================================

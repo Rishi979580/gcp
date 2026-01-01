@@ -1,0 +1,183 @@
+TERMINAL BASIC COMMANDS NOTES
+(FOR PYTHON, CLOUD SHELL, AUTOMATION)
+
+Purpose:
+To confidently use terminal commands for Python development,
+virtual environments, Git, and cloud-based automation projects.
+
+==================================================
+1. BASIC NAVIGATION COMMANDS
+==================================================
+
+pwd
+- Shows current working directory
+
+ls
+- Lists files and folders in current directory
+
+ls -l
+- Detailed list (permissions, size, date)
+
+ls -a
+- Shows hidden files also
+
+cd folder_name
+- Move into a folder
+
+cd ..
+- Go one directory up
+
+cd ~
+- Go to home directory
+
+==================================================
+2. FILE & FOLDER MANAGEMENT
+==================================================
+
+mkdir folder_name
+- Create a new folder
+
+mkdir -p parent/child
+- Create nested folders
+
+touch file.txt
+- Create an empty file
+
+rm file.txt
+- Delete a file
+
+rm -r folder_name
+- Delete a folder (use carefully)
+
+cp file1.txt file2.txt
+- Copy file
+
+mv old.txt new.txt
+- Rename file
+
+mv file.txt folder/
+- Move file to folder
+
+==================================================
+3. FILE CONTENT & EDITING
+==================================================
+
+cat file.txt
+- Show file content
+
+nano file.txt
+- Open file in simple terminal editor
+
+vi file.txt
+- Open file in advanced editor
+
+head file.txt
+- Show first 10 lines
+
+tail file.txt
+- Show last 10 lines
+
+==================================================
+4. PYTHON COMMANDS
+==================================================
+
+python --version
+- Check Python version
+
+python main.py
+- Run Python file
+
+python3 -m venv venv
+- Create virtual environment
+
+source venv/bin/activate
+- Activate virtual environment
+
+deactivate
+- Deactivate virtual environment
+
+==================================================
+5. PIP / PACKAGE MANAGEMENT
+==================================================
+
+pip install package_name
+- Install Python package
+
+pip uninstall package_name
+- Remove package
+
+pip list
+- Show installed packages
+
+pip freeze > requirements.txt
+- Save dependencies
+
+pip install -r requirements.txt
+- Install dependencies from file
+
+==================================================
+6. GIT BASIC COMMANDS (VERY IMPORTANT)
+==================================================
+
+git init
+- Initialize git repository
+
+git status
+- Check repository status
+
+git add .
+- Stage all changes
+
+git commit -m "message"
+- Commit changes
+
+git branch -M main
+- Set main branch
+
+git remote add origin REPO_URL
+- Connect GitHub repository
+
+git push -u origin main
+- Push code to GitHub
+
+git pull
+- Get latest changes
+
+git clone REPO_URL
+- Clone repository
+
+==================================================
+7. CLOUD SHELL / TERMINAL UTILITIES
+==================================================
+
+clear
+- Clear terminal screen
+
+history
+- Show command history
+
+exit
+- Close terminal session
+
+==================================================
+8. DAILY PRACTICE FLOW (RECOMMENDED)
+==================================================
+
+cd ~/projects/python_automation_project
+source venv/bin/activate
+python main.py
+git add .
+git commit -m "update"
+git push
+deactivate
+
+==================================================
+9. GOLDEN RULE
+==================================================
+
+Terminal confidence comes from daily use.
+Use it every day for 10–15 minutes.
+
+==================================================
+END OF NOTES
+==================================================
