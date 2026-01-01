@@ -1,0 +1,141 @@
+PYTHON VENV & INTERPRETER ISSUE – REFERENCE NOTES
+(FOR CLOUD SHELL / VS CODE / AUTOMATION PROJECTS)
+
+Purpose:
+To quickly fix Python errors related to virtual environment (venv),
+wrong interpreter selection,
+and module not found issues in VS Code or Cloud Shell.
+
+==================================================
+1. Common Problem Symptoms
+==================================================
+
+- ModuleNotFoundError (even after pip install)
+- dotenv installed but import fails
+- pip list shows package, but python cannot find it
+- Multiple Python versions shown in VS Code
+- /bin/python used instead of venv python
+
+Example Error:
+ModuleNotFoundError: No module named 'dotenv'
+
+==================================================
+2. Root Cause (MOST IMPORTANT)
+==================================================
+
+The virtual environment (venv) exists,
+but Python is being run using SYSTEM PYTHON instead of VENV PYTHON.
+
+System Python examples:
+- /bin/python
+- /usr/bin/python
+
+Correct Python (venv):
+- project_path/venv/bin/python
+
+Rule:
+pip install happens inside ONE python,
+but code is run using ANOTHER python → error occurs.
+
+==================================================
+3. Mandatory Rule (Golden Rule)
+==================================================
+
+pip install  +  python run
+MUST use the SAME interpreter.
+
+venv python == venv pip
+
+==================================================
+4. How to Check Which Python is Active
+==================================================
+
+Run:
+which python
+
+Correct output:
+project_path/venv/bin/python
+
+Wrong output:
+ /bin/python
+ /usr/bin/python
+
+==================================================
+5. VS Code – Correct Interpreter Selection
+==================================================
+
+Steps:
+1. Press: Ctrl + Shift + P
+2. Select: Python: Select Interpreter
+
+If venv is NOT visible automatically:
+- Click: Enter interpreter path…
+- Paste exact path:
+
+/home/USERNAME/project_name/venv/bin/python
+
+Example:
+ /home/futureway_in/python_automation_project/venv/bin/python
+
+After selecting:
+VS Code will always use this python for the project.
+
+==================================================
+6. Manual Run (Emergency Fix)
+==================================================
+
+If VS Code keeps using wrong python, run explicitly:
+
+venv/bin/python main.py
+
+This ALWAYS works because it bypasses VS Code selection.
+
+==================================================
+7. Verify Package Availability
+==================================================
+
+Test command:
+python -c "from dotenv import load_dotenv; print('dotenv working')"
+
+Expected output:
+dotenv working
+
+If this passes → interpreter is correct.
+
+==================================================
+8. Cleanup Recommendation
+==================================================
+
+If both are installed:
+- dotenv
+- python-dotenv
+
+Keep ONLY:
+python-dotenv
+
+Remove extra package:
+pip uninstall dotenv
+
+==================================================
+9. When This Issue Commonly Happens
+==================================================
+
+- Fresh Cloud Shell session
+- After git clone
+- After creating new venv
+- VS Code reload / crash
+- Switching machines
+
+Fix is SAME every time:
+Select correct interpreter.
+
+==================================================
+10. One-Line Fix Summary
+==================================================
+
+Error = wrong python
+Solution = select venv python
+
+==================================================
+END OF NOTES
+==================================================
