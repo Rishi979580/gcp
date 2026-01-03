@@ -1,0 +1,12 @@
+Website (React / JS)
+   |
+   | POST /enroll
+   v
+Python API (FastAPI)
+   |
+   |-- send admin_alert.html
+   |-- send user_confirmation.html
+   |
+Docker Container
+   |
+Cloud Run (Public URL)

@@ -1,0 +1,26 @@
+🐳 STEP 3 – Docker Image banao (Cloud Run Ready)
+
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+
+
+
+☁️ STEP 4 – GCP Cloud Run Deploy
+
+gcloud run deploy workshop-enroll-api \
+  --source . \
+  --region asia-south1 \
+  --allow-unauthenticated
+
+
+👉 URL milega:
+
+https://workshop-enroll-api-xxxx.a.run.app

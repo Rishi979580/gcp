@@ -34,6 +34,11 @@ cd ~
 2. FILE & FOLDER MANAGEMENT
 ==================================================
 
+All folder structure-
+
+sudo apt install tree
+tree -I "venv|.venv|__pycache__"
+
 mkdir folder_name
 - Create a new folder
 
