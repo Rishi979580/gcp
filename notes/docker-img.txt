@@ -1,0 +1,50 @@
+🐳 STEP 3 – Docker Image banao (Cloud Run Ready)
+
+FROM python:3.12-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+
+
+
+☁️ STEP 4: GCP Cloud Run Deploy- Copy and past in terminal for deployment – 
+
+(i) Initially:
+
+gcloud run deploy email-service \
+  --source . \
+  --region asia-south1 \
+  --platform managed \
+  --allow-unauthenticated \
+  --set-env-vars "BREVO_SMTP_HOST=smtp-relay.brevo.com,BREVO_SMTP_PORT=465,BREVO_SMTP_USER=95acd2001@smtp-brevo.com,BREVO_SMTP_KEY=xsmtpsib-xxxx,SENDER_EMAIL=futureway.in@gmail.com,SECRET_KEY=WORKSHOP_2025_SECRET,GOOGLE_SHEET_NAME=Futureway-skill-workshop-customer" \
+  --set-secrets GOOGLE_SERVICE_ACCOUNT_JSON=google-sheet-sa:latest
+
+
+
+
+(ii) rebuild case only:
+gcloud run deploy email-service \
+  --source . \
+  --region asia-south1 \
+  --allow-unauthenticated
+
+(iii) google sheet secrete add krna:
+gcloud secrets create google-sheet-sa \
+  --data-file=service_account.json
+
+
+(vi) error check:
+
+gcloud run services logs read email-service --region asia-south1 --limit 20
+
+
+👉 URL milega:
+
+https://workshop-enroll-api-xxxx.a.run.app
+https://email-service-58242102839.asia-south1.run.app
